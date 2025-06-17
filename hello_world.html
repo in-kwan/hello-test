@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World - Git Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full mx-4">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                🌍 Hello World!
+            </h1>
+            <p class="text-lg text-gray-600 mb-6">
+                Git과 GitHub 배포 연습용 페이지입니다
+            </p>
+            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                <p class="text-sm text-gray-500">
+                    현재 시간: <span id="currentTime" class="font-mono text-blue-600"></span>
+                </p>
+            </div>
+            <button 
+                id="clickBtn" 
+                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-200"
+            >
+                클릭해보세요!
+            </button>
+            <p id="clickCount" class="mt-4 text-gray-600">클릭 횟수: 0</p>
+        </div>
+    </div>
+
+    <script>
+        // 현재 시간 표시
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleString('ko-KR');
+        }
+        
+        // 페이지 로드 시 시간 표시 및 1초마다 업데이트
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // 클릭 카운터
+        let clickCount = 0;
+        const button = document.getElementById('clickBtn');
+        const countDisplay = document.getElementById('clickCount');
+        
+        button.addEventListener('click', function() {
+            clickCount++;
+            countDisplay.textContent = `클릭 횟수: ${clickCount}`;
+            
+            // 클릭 효과
+            this.classList.add('scale-95');
+            setTimeout(() => {
+                this.classList.remove('scale-95');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
